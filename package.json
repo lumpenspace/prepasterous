@@ -1,0 +1,16 @@
+{
+  "name": "prepasterous",
+  "version": "1.0.0",
+  "description": "Prevents highjacking GPTs by checking and warning of hidden characters upon paste",
+  "main": "index.js",
+  "repository": "https://github.com/lumpenspace/prepasterous",
+  "author": "lumpenspace <125578322+lumpenspace@users.noreply.github.com>",
+  "license": "MIT",
+  "type":"module",
+  "private": false,
+  "buile": "tsc",
+  "dependencies": {
+    "tsc": "^2.0.4",
+    "typescript": "^5.3.3"
+  }
+}

@@ -6,9 +6,6 @@
   "version": "1.0",
   "author": "lumpenspace <lumpenspace@gmail.com>",
   "permissions": ["clipboardRead", "clipboardWrite","activeTab", "scripting", "storage", "notifications"],
-  "background": {
-    "service_worker": "background.js"
-  },
   "icons": {
     "128": "icon.png"
   },

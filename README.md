@@ -21,4 +21,6 @@ https://github.com/lumpenspace/prepasterous/assets/125578322/1a613c3f-dc6f-46a5-
 
 ## Get it
 
-Click + save as
+You'll havre to download the thing, and then load the [/dist](https://github.com/lumpenspace/prepasterous/tree/main/dist) directory in [chrome://extensions](chrome://extensions) under "Load unpacked", like so:
+
+<img width="953" alt="adobe-dingboard" src="https://github.com/lumpenspace/prepasterous/assets/125578322/fe0a0cee-7cb6-45a4-b512-13697864c3e3">

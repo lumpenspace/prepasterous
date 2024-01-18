@@ -1,21 +1,21 @@
 
 {
   "manifest_version": 3,
-  "name": "Paste Interceptor",
+  "name": "prepasterous",
+  "description": "Ask confirmation before pasting invisible characters into text fields, to prevent hidden prompt injection attacks.",
   "version": "1.0",
+  "author": "lumpenspace <lumpenspace@gmail.com>",
   "permissions": ["clipboardRead", "clipboardWrite","activeTab", "scripting", "storage", "notifications"],
   "background": {
     "service_worker": "dist/background.js"
-
+  },
+  "icons": {
+    "128": "public/icon.png"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["dist/content.js"]
     }
-  ],
-  "action": {
-    "default_popup": "dist/popup.html",
-    "default_title": "Paste Interceptor"
-  }  
+  ]
 }

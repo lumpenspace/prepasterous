@@ -1,33 +1,4 @@
-
-declare global {
-  interface Window {
-    myStyles: any;
-  }
-}
 import styles from './notification.css';
-
-const toStringKey = (key: string): string =>
-  key.replace(/([A-Z])/g, '-$1').toLowerCase();
-
-const toStyleString = (style: CSSStyleDeclaration): string => {
-  const styleString = Object.entries(style)
-    .map(([key, value]) => `${toStringKey(key)}: ${value};`)
-    .join(' ');
-  return styleString;
-};
-
-const getBgColor = (() => {
-  let memoizedColor: string | null = null;
-
-  return (): string => {
-    if (memoizedColor === null) {
-      const body = document.body as Element;
-      memoizedColor = window.getComputedStyle(body).backgroundColor;
-    }
-    return memoizedColor || "rgb(52,53,65)";
-  };
-})();
-
 
 const setupKeyDownListener = (input:HTMLInputElement, clean: string, original: string, notificationId: string) => {
   const start = input.selectionStart || 0;
@@ -67,7 +38,6 @@ const createNotification = (
     <style>
       ${styles.toString()}
     </style>`;
-  window.myStyles = styles;
   return notification;
 };
 export { createNotification };

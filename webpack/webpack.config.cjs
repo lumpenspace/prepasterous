@@ -1,12 +1,8 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
-const css = require('css-loader');
-const cssString = require('css-to-string-loader');
-const { optimize } = require('webpack');
 module.exports = {
    mode: "production",
    entry: {
-      background: path.resolve(__dirname, "..", "src", "background.ts"),
       content: path.resolve(__dirname, "..", "src", "content.ts"),
 
    },

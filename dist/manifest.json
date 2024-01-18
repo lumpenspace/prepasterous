@@ -1,0 +1,21 @@
+
+{
+  "manifest_version": 3,
+  "name": "prepasterous",
+  "description": "Ask confirmation before pasting invisible characters into text fields, to prevent hidden prompt injection attacks.",
+  "version": "1.0",
+  "author": "lumpenspace <lumpenspace@gmail.com>",
+  "permissions": ["clipboardRead", "activeTab", "scripting", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+.prepasterous-notification {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999;
+  padding: 10px;
+  box-sizing: 'border-box';
+  background-color: rgba(0, 0, 0, 0.8);
+  border-top: 2px solid #eee;
+
+  color: white;
+}
+.prepasterous-notification-text {
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+.prepasterous-notification-container blockquote {
+  background-color: #eee;
+  border-top: #000;
+  border-bottom: #000;
+  color: #000;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+.prepasterous-notification-container {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  border-radius: 3px;
+  box-sizing: 'border-box';
+  color: white;
+}
+.prepasterous-notification-container pre {
+  display: inline-block;
+  background-color: rgba(125, 0, 0, 0.8) ;
+  padding: 2px;
+  border-radius: 5px;
+  color: #eee;
+  font-weight: bold;
+}
+.prepasterous-notification-container code pre {
+  background-color: #fff;
+  width: 2px;
+  height: 2px;
+  padding: 0;
+  border-radius: 2px;
+  overflow: hidden;
+}

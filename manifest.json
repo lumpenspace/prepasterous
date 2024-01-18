@@ -3,14 +3,19 @@
   "manifest_version": 3,
   "name": "Paste Interceptor",
   "version": "1.0",
-  "permissions": ["clipboardRead","activeTab", "scripting"],
+  "permissions": ["clipboardRead", "clipboardWrite","activeTab", "scripting", "storage", "notifications"],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "dist/background.js"
+
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "js": ["dist/content.js"]
     }
-  ]
+  ],
+  "action": {
+    "default_popup": "dist/popup.html",
+    "default_title": "Paste Interceptor"
+  }  
 }

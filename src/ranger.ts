@@ -1,72 +1,76 @@
-
 type TRange = [start: number, end: number];
 
 class Ranger {
-    startOffset: number;
-    endOffset: number;
+    start: number;
+    end: number;
+
 
     constructor([start, end]: TRange) {
-        this.startOffset = start;
-        this.endOffset = end;
+        this.start = start;
+        this.end = end;
     }
     getRange() {
-        return [this.startOffset, this.endOffset];
+        return [this.start, this.end];
     }
     includes(candidate: number) {
-        return candidate >= this.startOffset && candidate <= this.endOffset;
+        return candidate >= this.start && candidate <= this.end;
     }
     convertIn(candidate: number) {
         if (!this.includes(candidate)) {
             return undefined;
         }
-        return candidate + this.startOffset;
+        return candidate + this.start;
     }
     convertOut(candidate: number) {
-        return candidate - this.startOffset;
+        return candidate - this.start;
     }
     toString() {
-        return `${this.startOffset}-${this.endOffset}`;
+        return `${this.start}-${this.end}`;
     }
     *each() {
-        for (let i = this.startOffset; i <= this.endOffset; i++) {
+        for (let i = this.start; i <= this.end; i++) {
             yield i;
         }
     }
     regexRange(): string {
-        const startHex = this.startOffset.toString(16).padStart(4, '0');
-        const endHex = this.endOffset.toString(16).padStart(4, '0');
-        return `\\u${startHex}-\\u${endHex}`;
+        const startHex = this.start.toString(16).padStart(4, '0');
+        const endHex = this.end.toString(16).padStart(4, '0');
+        return `\\u{${startHex}}-\\u{${endHex}}`;
     }
 }
 
-
 class CharRanger extends Ranger {
-    constructor(range: TRange) {
-        super(range);
-    }
-
+    alphabetStart = 0x30; // Start of the alphabet in Unicode (A)
 
     convertCharIn(candidate: string): string|null {
-        const alphabetStart = 0x0041; // Start of the alphabet in Unicode (A)
         const code = candidate.codePointAt(0);
         if (!code) {
             return null;
         }
-        const adjustedCode = code - alphabetStart + this.startOffset;
+        const adjustedCode = code - this.alphabetStart + this.start;
         if (this.includes(adjustedCode)) {
             return String.fromCodePoint(adjustedCode);
         }
         return null;
     }
 
-    convertCharOut(candidate: string): string|null {
-        const code = candidate.codePointAt(0);
-        if (!code || !this.includes(code)) {
+    __convertCodePointOut(candidate: string): number|null { 
+        const code = candidate.codePointAt(0)!;
+
+        if (!this.includes(code)) {
+            console.log(`Char ${candidate} not in range ${this.toString()}`);
             return null;
         }
-        const alphabetStart = 0x0041; // Start of the alphabet in Unicode (A)
-        const adjustedCode = code - this.startOffset + alphabetStart;
-        return String.fromCodePoint(adjustedCode);
+        return this.convertOut(code + this.alphabetStart);
+    }
+
+    convertCharOut(candidate: string): string|null {
+        const code = this.__convertCodePointOut(candidate);
+        if (code === null) {
+            return null;
+        }
+        const char = String.fromCodePoint(code);
+        return char;
     }
 }
 

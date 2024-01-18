@@ -1,15 +1,21 @@
 {
   "compilerOptions": {
-    
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "outDir": "./dist",
-    "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
-    "allowJs": true,
+    "lib": ["es2021", "dom"],
     "moduleResolution": "node",
-    "lib": ["es2021", "dom"]
+    "allowSyntheticDefaultImports": true,
+    "allowJs": false,
+    "jsx": "react",
+    "strict": true,
+    "module": "commonjs",
+    "target": "es6",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "rootDir": "src",
+    "outDir": "dist/js",
+    "noEmitOnError": true,
+    "typeRoots": [ "node_modules/@types" ]
+
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/content.ts"],
 }

@@ -5,7 +5,7 @@
   "description": "Ask confirmation before pasting invisible characters into text fields, to prevent hidden prompt injection attacks.",
   "version": "1.0",
   "author": "lumpenspace <lumpenspace@gmail.com>",
-  "permissions": ["clipboardRead", "activeTab", "scripting", "storage"],
+  "permissions": ["clipboardRead", "clipboardWrite","activeTab", "scripting", "storage", "notifications"],
   "background": {
     "service_worker": "background.js"
   },
